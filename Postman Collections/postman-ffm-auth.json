@@ -28,7 +28,7 @@
 									}
 								}
 							],
-							"_postman_id": "4bd09ecc-6d9e-4c2e-8b9e-c5f56287db53",
+							"id": "4bd09ecc-6d9e-4c2e-8b9e-c5f56287db53",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -46,23 +46,21 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "//Add random function for test automation \n{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"firstname\": \"{{$randomFirstName}}\",\n    \"lastname\": \"{{$randomLastName}}\",\n    \"username\": \"{{$randomUserName}}\"\n}",
-									"options": {}
+									"raw": "//Add random function for test automation \n{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"firstname\": \"{{$randomFirstName}}\",\n    \"lastname\": \"{{$randomLastName}}\",\n    \"username\": \"{{$randomUserName}}\"\n}"
 								},
 								"url": "{{serverURL}}/api/v1/field-force/auth/register-admin-user"
 							},
 							"response": []
 						}
 					],
-					"_postman_id": "ef0f5b74-6528-43dc-b3b3-57a563184640",
-					"_postman_isSubFolder": true
+					"id": "ef0f5b74-6528-43dc-b3b3-57a563184640"
 				},
 				{
 					"name": "Negative",
 					"item": [
 						{
 							"name": "Unable to create an account which is exist",
-							"_postman_id": "caa0dc6a-29ff-45d6-bf14-aebf0f74973a",
+							"id": "caa0dc6a-29ff-45d6-bf14-aebf0f74973a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -80,19 +78,17 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\"email\":\"tesseruser@example.com\",\"password\":\"string\",\"firstname\":\"string\",\"lastname\":\"string\",\"username\":\"testserviceser\"}",
-									"options": {}
+									"raw": "//beauitfy is done\n{\n    \"email\": \"tesseruser@example.com\",\n    \"password\": \"string\",\n    \"firstname\": \"string\",\n    \"lastname\": \"string\",\n    \"username\": \"testserviceser\"\n}"
 								},
 								"url": "{{serverURL}}/api/v1/field-force/auth/register-admin-user"
 							},
 							"response": []
 						}
 					],
-					"_postman_id": "e6f30b9a-9718-4e32-94b1-122111d70ffa",
-					"_postman_isSubFolder": true
+					"id": "e6f30b9a-9718-4e32-94b1-122111d70ffa"
 				}
 			],
-			"_postman_id": "9ca465e0-7671-4182-bb75-2e04235c12d7"
+			"id": "9ca465e0-7671-4182-bb75-2e04235c12d7"
 		},
 		{
 			"name": "Log on",
@@ -168,7 +164,7 @@
 									}
 								}
 							],
-							"_postman_id": "858f7145-96b3-4ce6-980d-d8570a307a1a",
+							"id": "858f7145-96b3-4ce6-980d-d8570a307a1a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -186,10 +182,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"continuebodytesseruser@example.com\",\n    \"password\": \"string\"\n}",
-									"options": {
-										"raw": {}
-									}
+									"raw": "{\n    \"email\": \"continuebodytesseruser@example.com\",\n    \"password\": \"string\"\n}"
 								},
 								"url": "http://96.85.103.136:8001/api/v1/field-force/auth/dashboard-user-login"
 							},
@@ -211,7 +204,7 @@
 									}
 								}
 							],
-							"_postman_id": "89d4e2ad-ed0e-47c9-8cf1-5581ed91e20a",
+							"id": "89d4e2ad-ed0e-47c9-8cf1-5581ed91e20a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -234,17 +227,15 @@
 							"response": []
 						}
 					],
-					"_postman_id": "c40f569f-f20a-471f-95c4-69cd55dbf540",
-					"_postman_isSubFolder": true
+					"id": "c40f569f-f20a-471f-95c4-69cd55dbf540"
 				},
 				{
 					"name": "Negative",
 					"item": [],
-					"_postman_id": "543b4f5e-8bea-48bb-822f-108bafe3283f",
-					"_postman_isSubFolder": true
+					"id": "543b4f5e-8bea-48bb-822f-108bafe3283f"
 				}
 			],
-			"_postman_id": "a5085f35-619a-494f-a3a8-ed8503909355"
+			"id": "a5085f35-619a-494f-a3a8-ed8503909355"
 		}
 	]
 }
