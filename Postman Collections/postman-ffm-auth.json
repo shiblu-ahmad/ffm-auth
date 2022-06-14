@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "bca44ebe-b729-4b5f-be35-78f38214154d",
+		"name": "Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Company",
+			"item": [
+				{
+					"name": "Postive",
+					"item": [
+						{
+							"name": "Register an Admin new User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4f36cec3-bfa5-4b22-a400-c8336ae07976",
+										"exec": [
+											"//Add assertion on the test so verification is easy against a given API. ",
+											"pm.test(\"When a user is exist and if we run the test, we expect a test result on the response body which is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "4bd09ecc-6d9e-4c2e-8b9e-c5f56287db53",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "//Add random function for test automation \n{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"firstname\": \"{{$randomFirstName}}\",\n    \"lastname\": \"{{$randomLastName}}\",\n    \"username\": \"{{$randomUserName}}\"\n}",
+									"options": {}
+								},
+								"url": "{{serverURL}}/api/v1/field-force/auth/register-admin-user"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "ef0f5b74-6528-43dc-b3b3-57a563184640",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Unable to create an account which is exist",
+							"_postman_id": "caa0dc6a-29ff-45d6-bf14-aebf0f74973a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"email\":\"tesseruser@example.com\",\"password\":\"string\",\"firstname\":\"string\",\"lastname\":\"string\",\"username\":\"testserviceser\"}",
+									"options": {}
+								},
+								"url": "{{serverURL}}/api/v1/field-force/auth/register-admin-user"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "e6f30b9a-9718-4e32-94b1-122111d70ffa",
+					"_postman_isSubFolder": true
+				}
+			],
+			"_postman_id": "9ca465e0-7671-4182-bb75-2e04235c12d7"
+		},
+		{
+			"name": "Log on",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Dashboard user Log on",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "57e45982-dafc-4d3f-800e-a5b0d195fd74",
+										"exec": [
+											"//Json schema validation",
+											"var jsonData=JSON.parse(responseBody);",
+											"",
+											"var logonSchema = ",
+											"{",
+											"    \"$schema\": \"https://json-schema.org/draft/2019-09/schema\",",
+											"    \"$id\": \"http://example.com/example.json\",",
+											"    \"type\": \"object\",",
+											"    \"default\": {},",
+											"    \"title\": \"Root Schema\",",
+											"    \"required\": [",
+											"        \"auth_token\",",
+											"        \"message\",",
+											"        \"status\"",
+											"    ],",
+											"    \"properties\": {",
+											"        \"auth_token\": {",
+											"            \"type\": \"string\",",
+											"            \"default\": \"\",",
+											"            \"title\": \"The auth_token Schema\",",
+											"            \"examples\": [",
+											"                \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTUyMjQ5NjAsImlhdCI6MTY1NTIyMTM2MCwic3ViIjo3MzIxOCwidXNlcl90eXBlIjoiRGFzaGJvYXJkIiwibmFtZSI6InN0cmluZyBzdHJpbmciLCJlbWFpbCI6ImNvbnRpbnVlYm9keXRlc3NlcnVzZXJAZXhhbXBsZS5jb20iLCJtZW1iZXJfdHlwZSI6MSwiY29tcGFueV9pZCI6MSwiZGVzaWduYXRpb24iOm51bGwsImRlcGFydG1lbnQiOm51bGx9.RsaQ4WaR-8-1s4xAGlprfwdL_z6T-1lBJ0tW0c25zG0\"",
+											"            ]",
+											"        },",
+											"        \"message\": {",
+											"            \"type\": \"string\",",
+											"            \"default\": \"\",",
+											"            \"title\": \"The message Schema\",",
+											"            \"examples\": [",
+											"                \"Successfully logged in.\"",
+											"            ]",
+											"        },",
+											"        \"status\": {",
+											"            \"type\": \"string\",",
+											"            \"default\": \"\",",
+											"            \"title\": \"The status Schema\",",
+											"            \"examples\": [",
+											"                \"success\"",
+											"            ]",
+											"        }",
+											"    },",
+											"    \"examples\": [{",
+											"        \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTUyMjQ5NjAsImlhdCI6MTY1NTIyMTM2MCwic3ViIjo3MzIxOCwidXNlcl90eXBlIjoiRGFzaGJvYXJkIiwibmFtZSI6InN0cmluZyBzdHJpbmciLCJlbWFpbCI6ImNvbnRpbnVlYm9keXRlc3NlcnVzZXJAZXhhbXBsZS5jb20iLCJtZW1iZXJfdHlwZSI6MSwiY29tcGFueV9pZCI6MSwiZGVzaWduYXRpb24iOm51bGwsImRlcGFydG1lbnQiOm51bGx9.RsaQ4WaR-8-1s4xAGlprfwdL_z6T-1lBJ0tW0c25zG0\",",
+											"        \"message\": \"Successfully logged in.\",",
+											"        \"status\": \"success\"",
+											"    }]",
+											"};",
+											"",
+											"pm.test('Schema is valid', function () {",
+											"    ",
+											"    pm.expect(tv4.validate(jsonData, logonSchema)).to.be.true;",
+											"});",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "858f7145-96b3-4ce6-980d-d8570a307a1a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"continuebodytesseruser@example.com\",\n    \"password\": \"string\"\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": "http://96.85.103.136:8001/api/v1/field-force/auth/dashboard-user-login"
+							},
+							"response": []
+						},
+						{
+							"name": "Dashboard user log out",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d7e6d681-a654-444b-944d-69dd25fc802e",
+										"exec": [
+											"pm.test(\"Dashboard log out successfully to use a JWT token\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "89d4e2ad-ed0e-47c9-8cf1-5581ed91e20a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{json_token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									}
+								],
+								"url": "http://96.85.103.136:8001/api/v1/field-force/auth/logout-dashboard-user"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "c40f569f-f20a-471f-95c4-69cd55dbf540",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Negative",
+					"item": [],
+					"_postman_id": "543b4f5e-8bea-48bb-822f-108bafe3283f",
+					"_postman_isSubFolder": true
+				}
+			],
+			"_postman_id": "a5085f35-619a-494f-a3a8-ed8503909355"
+		}
+	]
+}
